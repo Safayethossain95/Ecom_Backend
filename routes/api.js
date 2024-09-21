@@ -11,14 +11,27 @@ import * as CategoryController from "../app/controllers/CategoryController.js";
 import * as BrandController from "../app/controllers/BrandController.js";
 import * as InvoiceController from "../app/controllers/InvoiceController.js";
 
+
+
+
 // Users
-router.post("/Registration", UsersController.Registration)
 router.post("/Login",UsersController.Login)
+router.get("/logout",AuthMiddleware,UsersController.Logout)
+router.post("/Registration", UsersController.RegisterUser)
+router.get('/UserOTP/:email',UsersController.UserOTP)
+router.post("/CodeVerify", UsersController.CodeVerify)
 router.get("/ProfileDetails", AuthMiddleware,UsersController.ProfileDetails)
 router.post("/ProfileUpdate", AuthMiddleware,UsersController.ProfileUpdate)
-router.get("/EmailVerify/:email", UsersController.EmailVerify)
-router.post("/CodeVerify", UsersController.CodeVerify)
 router.post("/ResetPassword", AuthMiddleware,UsersController.ResetPassword)
+router.post("/CreateProfile", AuthMiddleware,UsersController.CreateProfile)
+router.post("/UpadateProfile", AuthMiddleware,UsersController.UpdateProfile)
+router.get("/ReadProfile", AuthMiddleware,UsersController.ReadProfile)
+
+// WishList
+router.post("/CreateWishList", AuthMiddleware,WishListController.CreateWish)
+router.post("/ReadWishList", AuthMiddleware,WishListController.ReadWishList)
+router.post("/UpdateWishList", AuthMiddleware,WishListController.UpdateWishList)
+router.post("/RemoveWishList", AuthMiddleware,WishListController.RemoveWish)
 
 
 // Categories
