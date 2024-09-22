@@ -29,7 +29,7 @@ router.get("/ReadProfile", AuthMiddleware,UsersController.ReadProfile)
 
 // WishList
 router.post("/CreateWishList", AuthMiddleware,WishListController.CreateWish)
-router.post("/ReadWishList", AuthMiddleware,WishListController.ReadWishList)
+router.get("/ReadWishList", AuthMiddleware,WishListController.ReadWishList)
 router.post("/UpdateWishList", AuthMiddleware,WishListController.UpdateWishList)
 router.post("/RemoveWishList", AuthMiddleware,WishListController.RemoveWish)
 
@@ -43,10 +43,10 @@ router.post("/CreateProductReview",ProductController.CreateProductReview)
 
 
 //Cart 
-router.post("/CreateCart",CartListController.CreateCart)
-router.get("/ReadCartList",CartListController.ReadCartList)
-router.post("/UpdateCart",CartListController.UpdateCart)
-router.post("/RemoveCart",CartListController.RemoveCart)
+router.post("/CreateCart",AuthMiddleware,CartListController.CreateCart)
+router.post("/RemoveCart",AuthMiddleware,CartListController.RemoveCart)
+router.get("/ReadCartList",AuthMiddleware,CartListController.ReadCartList)
+router.post("/UpdateCart",AuthMiddleware,CartListController.UpdateCart)
 
 // Wish
 
